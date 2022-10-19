@@ -3,6 +3,67 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css);
 
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0; /* o asterisco significa que vai funcionar em toda a página, é uma pratica mais comum */
+    padding: 0; /* margem interna */
+}
+
+header{
+    width: 100%; /* 100% da largura da página */
+    height: 100vh; /* vh (view height) altura da visualização em que a página for carregada */
+    overflow: hidden; /* esconder o overflow desabilita a possibilidade do cabeçalho passar o tamanho da janela e ficar com aquela barra de rolagem embaixo */
+    position: relative;
+}
+
+.img-wrapper{ /* toda classe começa com ponto. Formatação de todo elemento que utilize essa classe */
+    width: 100%; /* vai ocupar 100% da largura , no caso do header (pq esta dentro do header)*/
+    height: 100%; 
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.8); /* "a" é de alfa, ele define a opacidade que o elementa vai ter. 0.8 significa 80% */
+}
+
+.img-wrapper img{ /* Seletor CSS para imagem que estejam dentro da classe img-wrapper. (para a imagem se limitar a ficar dentro do tamanho do img wrapper) */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* a forma que a imagem vai ser redimensionada(não distorce a imagem e perde proporção), com cover ela vai cobrir a div */
+    opacity: 0.5 ;
+}
+
+.banner{
+    position: absolute; /* para não ter um posicionamento estatico. pra isso funcionar, precisa estar dentro de um elemento com posicionamento relativo (no caso o header) */
+    top: 30%; /* parte superior */
+    left: 15%;
+}
+
+.banner h1{
+    color: #ffffff;
+    font-size: 3.5rem; /* unidade visando acessibilidade (em ou rem)*/
+    font-family: "Baloo Da 2", serif;
+    font-weight: 200;
+    text-shadow: .2rem .3rem 2px rgba(0, 0, 0, 0.4); /* distancia direita, distancia baixo, blur, cor */
+    line-height: 3.5rem;
+    margin-bottom: 2rem; /* tamanho do proprio paragrafo. distancia entre o h1 e o p */
+}
+
+.banner p{
+    font-family: "Josefin Sans", serif; /* trocar essa por josefin slab */
+    color: #ffffff;
+    font-size: 2rem;
+    text-shadow: .2rem .2rem rgba(0,0,0, .4);
+    margin-bottom: 2rem; /* distancia para o botão */
+
+}
+
+.banner button{
+    font-family: "Mulish", serif;
+    color: #fff;
+    font-size: 1.2rem;
+    background: #9D50BB;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6E48AA, #9D50BB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 1rem 3rem;
+    border: none;
+
+
+
+
 }
