@@ -1,10 +1,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap');
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css);
 
-*{
+* {
     margin: 0; /* o asterisco significa que vai funcionar em toda a página, é uma pratica mais comum */
     padding: 0; /* margem interna */
+    list-style: none; /* retira os bullets de listas */
+    text-decoration: none; /* Tira o sublinhado dos links */
+}
+
+:root {
+    --font-primary: "Baloo Da 2", serif;
+    --font-secundary: "Josefin Slab", serif ;
+    --font-action: "Mulish", serif;
+}
+
+.hamburguer{
+    width: 2rem; /* tamanho do objeto */
+    height: 2rem;
+    position: fixed; /* Torna fixo, assim será visivel mesmo quando a página rolar pra baixo */
+    z-index: 100; /* Trazer pra frente. Eixo Z funciona como camadas, colocamos um valor alto pra não correr o risco de ficar algo a frente.  */
+    right: 2rem; /* bordas externas */
+    top: 2rem;
+    display: flex; /* Para fazer a disposição das linhas do menu hamburguer */
+    flex-direction: column; /* Para fazer a disposição das linhas do menu hamburguer */
+    justify-content: space-evenly; /* Para fazer a disposição das linhas do menu hamburguer */
+    cursor: pointer;
+}
+
+.show-menu .hamburguer{
+    right: 17rem;
+}
+
+.line{
+    width: 100%; /* Teráo 100% do tamanho da classe pai, no caso hamburguer */
+    height: 2px; /* Vira uma fração de rem, é como 0.1 */
+    background-color: #fff;
+    box-shadow: 0.1rem 0.1rem 1px #000; /* deslocamento no eixo x, deslocamento no eixo y, blur, cor */  
+}
+.show-menu #line1{
+    transform: rotate(45deg) translate(.3rem, .45rem);  
+    transition: all 1s;  
+}
+.show-menu #line2{
+    opacity: 0;
+    visibility: hidden;
+}
+.show-menu #line3{
+    transform: rotate(-45deg) translate(.2rem, -.45rem);    
+    transition: all 1s;
+}
+
+.hamburguer span{
+    position: absolute;
+    left: 3rem;
+    height: 2rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8a06be;
+    color: #fff;
+    font-family: var(--font-action);
+    opacity: 0;    
+}
+
+.hamburguer span::before{ /*setinha do span */
+    content: "";
+    position: absolute;
+    border-right: .5rem solid #8a06be;
+    border-top: .5rem solid transparent;
+    border-left: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+    left: -1rem;    
+}
+
+.show-menu .hamburguer:hover span{
+    opacity: 1;
 }
 
 header{
@@ -47,7 +119,7 @@ header{
 .banner h1{
     color: #ffffff;
     font-size: 3.5rem; /* unidade visando acessibilidade (em ou rem)*/
-    font-family: "Baloo Da 2", serif;
+    font-family: var(--font-primary);
     font-weight: 200;
     text-shadow: .2rem .3rem 2px rgba(0, 0, 0, 0.4); /* distancia direita, distancia baixo, blur, cor */
     line-height: 3.5rem;
@@ -57,18 +129,18 @@ header{
 }
 
 .banner p{
-    font-family: "Josefin Sans", serif; /* trocar essa por josefin slab */
+    font-family: var(--font-secundary); /* trocar essa por josefin slab */
     color: #ffffff;
     font-size: 2rem;
-    font-weight: 200;
-    text-shadow: .2rem .2rem rgba(0,0,0, .4);
+    /*font-weight: 200;
+    text-shadow: .2rem .2rem rgba(0,0,0, .4);*/
     margin-bottom: 2rem; /* distancia para o botão */
     opacity: 0;
     animation: moveBanner 1s 0.7s forwards;
 }
 
 .banner button{
-    font-family: "Mulish", serif;
+    font-family: var(--font-action);
     color: #fff;
     /*font-size: 1.2rem;*/
     letter-spacing: .1rem; /* Faz um espaçamento entre as letras */
@@ -101,4 +173,66 @@ header{
         opacity: 1;
     }
     
+}
+
+.sidebar {
+    width: 20rem;
+    height: 100vh; /* altura da tela */
+    background-color: #fff;
+    position: fixed;
+    top: 0; /* pra ficar sempre no topo */
+    right: -20rem; /* 0 é no canto direito, -20 é escondida, sua posição inicial pra só se exibida quando clicada */
+    transition: all 1s;
+}
+
+.show-menu .sidebar{ /* todos que forem descendentes de um elemento show menu vai pegar essa configuração */
+    right: 0;
+}
+
+.menu {
+    position: absolute;
+    top: 40%;
+    left: 50%; /* para centralizar, porém não fica perfeito */
+    transform: translate(-50%, -50%); /* deslocamento para ficar bem centralizado (eixo x, eixo y) */
+}
+
+.menu-item {
+    text-align: center;
+    margin-bottom: .5rem; /* espaçamento entre os itens do menu */
+}
+
+.menu-link{
+    font-family: var(--font-action);
+    color: #555;
+    font-size: 2rem;
+    transition: color 1s; /*faz uma transição quando a color for alterada*/
+}
+
+.menu-link:hover{
+    color: purple;
+}
+
+.social-media{
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    display: flex; /* para fazer a distribuição */
+    justify-content: space-evenly; /*para deixar a distribuição mais uniforme*/ 
+}
+
+.social-media i{
+    background-color: purple;
+    color: #fff;
+    height: 2.5rem;
+    width: 2.5rem; 
+    font-size: 1.5rem; /* Como é um icone de fonte, seu tamanho pode ser alterado dessa forma*/
+    display: flex; /* para fazer a distribuição */
+    justify-content: space-evenly; /*para deixar a distribuição mais uniforme*/ 
+    align-items: center; /*alinha no eixo y */
+    border-radius: 50%;    
+    transition: background-color 1s;   
+}
+
+.social-media i:hover{
+    background-color: #8a06be;
 }
