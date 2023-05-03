@@ -15,11 +15,15 @@
     --font-action: "Mulish", serif;
 }
 
+html{
+    scroll-behavior: smooth; /*alterna os links (sobe e desce na página) de forma mais suave*/
+}
+
 .hamburguer{
     width: 2rem; /* tamanho do objeto */
     height: 2rem;
     position: fixed; /* Torna fixo, assim será visivel mesmo quando a página rolar pra baixo */
-    z-index: 100; /* Trazer pra frente. Eixo Z funciona como camadas, colocamos um valor alto pra não correr o risco de ficar algo a frente.  */
+    z-index: 151; /* Trazer pra frente. Eixo Z funciona como camadas, colocamos um valor alto pra não correr o risco de ficar algo a frente.  */
     right: 2rem; /* bordas externas */
     top: 2rem;
     display: flex; /* Para fazer a disposição das linhas do menu hamburguer */
@@ -183,6 +187,7 @@ header{
     top: 0; /* pra ficar sempre no topo */
     right: -20rem; /* 0 é no canto direito, -20 é escondida, sua posição inicial pra só se exibida quando clicada */
     transition: all 1s;
+    z-index: 150; /*para o menu ficar por cima de todos os elementos da página*/
 }
 
 .show-menu .sidebar{ /* todos que forem descendentes de um elemento show menu vai pegar essa configuração */
@@ -576,4 +581,52 @@ header{
     padding: 1rem;
     cursor: pointer;
     grid-column: 2; /*para colocar o botão na coluna pois faz mais sentido e ficará mais bonito*/
+}
+
+footer {
+    width: 100%;
+    height: 7rem;
+    background-color: #17181b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-content p{
+    font-family: var(--font-secundary);
+    color: #a7a7a7;
+    font-size: 1.2rem;
+}
+
+.social-list a{
+    margin: 0 2rem;
+    color: #a7a7a7;
+    font-size: 1.3rem;
+}
+
+.social-list ul{
+    display: flex;    
+}
+
+#link-topo{
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+    width: 3rem;
+    height: 3rem;
+    background: #9D50BB;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6E48AA, #9D50BB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    border-radius: .3rem;
+    box-shadow: 0 0.1rem 0.6rem #000000;
 }
