@@ -1,6 +1,5 @@
 # Web Developer & Front End Designer - Portfolio
 
-[Em desenvolvimento]<br>
 Projeto iniciado em acompanhamento de um curso, utilizando HTML, CSS e Javascript.<br>
 Todo o projeto esta comentado afim de servir como um guia do aprendizado.
 
